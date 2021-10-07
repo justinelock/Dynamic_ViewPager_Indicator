@@ -7,9 +7,9 @@ public class restaurantInfo {
     private String restaurantName;
     private String description;
     private String logoName;
-    private ArrayList<dish> dishes;
+    private ArrayList<Dish> dishes;
 
-    public restaurantInfo(){
+    public restaurantInfo() {
 
     }
 
@@ -43,11 +43,11 @@ public class restaurantInfo {
         this.logoName = logoName;
     }
 
-    ArrayList<dish> getDishes() {
+    ArrayList<Dish> getDishes() {
         return dishes;
     }
 
-    void setDishes(ArrayList<dish> dishes) {
+    void setDishes(ArrayList<Dish> dishes) {
         this.dishes = dishes;
     }
 }

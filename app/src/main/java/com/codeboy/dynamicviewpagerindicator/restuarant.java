@@ -25,7 +25,7 @@ public class restuarant extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.layout_restaurant,container,false);
+        return inflater.inflate(R.layout.layout_restaurant, container, false);
     }
 
     @Override
@@ -50,24 +50,24 @@ public class restuarant extends Fragment {
             }
         };
 
-        dishAdapter allDishes = new dishAdapter(getActivity(),resto.getDishes(),callback);
+        dishAdapter allDishes = new dishAdapter(getActivity(), resto.getDishes(), callback);
         dishesList.setAdapter(allDishes);
     }
 
 
-    private ArrayList<dish> getAllDishes(){
+    private ArrayList<Dish> getAllDishes() {
 
         //get dishes first
-        ArrayList<dish> dishes = new ArrayList<>();
+        ArrayList<Dish> dishes = new ArrayList<>();
         String[] dishNames = this.getResources().getStringArray(R.array.dishes);
         String[] dishPics = this.getResources().getStringArray(R.array.dish_icons);
         String[] dishDescription = this.getResources().getStringArray(R.array.dish_descriptions);
 
-        for(int i = 0;i < dishNames.length;i++){
+        for (int i = 0; i < dishNames.length; i++) {
             String dish_name = dishNames[i];
             String dish_description = dishDescription[i];
             String dish_icon = dishPics[i];
-            dish dish = new dish(dish_name,dish_description,dish_icon);
+            Dish dish = new Dish(dish_name, dish_description, dish_icon);
             dishes.add(dish);
         }
         return dishes;

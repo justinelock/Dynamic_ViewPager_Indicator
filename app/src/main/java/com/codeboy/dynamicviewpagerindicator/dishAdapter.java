@@ -17,13 +17,13 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder>{
+public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder> {
 
     private Context dishContx;
-    private ArrayList<dish> dishes;
+    private ArrayList<Dish> dishes;
     private callback listener;
 
-    dishAdapter(Context dishContx, ArrayList<dish> dishes, callback listener) {
+    dishAdapter(Context dishContx, ArrayList<Dish> dishes, callback listener) {
         this.dishContx = dishContx;
         this.dishes = dishes;
         this.listener = listener;
@@ -39,13 +39,13 @@ public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull distViewHolder holder, int position) {
-        dish dish = dishes.get(position);
+        Dish dish = dishes.get(position);
 
         holder.dish_name.setText(dish.getDishName());
         holder.dish_description.setText(dish.getDishDescription());
 
         Resources resources = dishContx.getResources();
-        final int resourceId = resources.getIdentifier(dish.getDishIcon(),"drawable",dishContx.getPackageName());
+        final int resourceId = resources.getIdentifier(dish.getDishIcon(), "drawable", dishContx.getPackageName());
         Glide.with(dishContx)
                 .load(resourceId)
                 .apply(new RequestOptions().placeholder(R.drawable.food_background_1).fitCenter())
@@ -59,7 +59,7 @@ public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder
         });
     }
 
-    public interface callback{
+    public interface callback {
         void onDishClicked();
     }
 
@@ -74,6 +74,7 @@ public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder
         TextView dish_name;
         TextView dish_description;
         ImageButton order;
+
         distViewHolder(@NonNull View itemView) {
             super(itemView);
             //init views

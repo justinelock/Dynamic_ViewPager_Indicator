@@ -1,16 +1,16 @@
 package com.codeboy.dynamicviewpagerindicator;
 
-public class dish {
+public class Dish {
 
     private String dishName;
     private String dishDescription;
     private String dishIcon;
 
-    public dish (){
+    public Dish(){
 
     }
 
-    public dish(String dishName, String dishDescription, String dishIcon) {
+    public Dish(String dishName, String dishDescription, String dishIcon) {
         this.dishName = dishName;
         this.dishDescription = dishDescription;
         this.dishIcon = dishIcon;

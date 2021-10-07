@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
@@ -43,9 +43,9 @@
                 android:id="@+id/bottom_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/white"
                 android:layout_weight="0.5"
-                android:visibility="gone"/>
+                android:background="@color/white"
+                android:visibility="gone" />
 
         </LinearLayout>
 

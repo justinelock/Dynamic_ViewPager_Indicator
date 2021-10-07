@@ -34,21 +34,21 @@ public class MainActivity extends AppCompatActivity {
         initializeComponents();
     }
 
-    private void initializeComponents(){
+    private void initializeComponents() {
         indicator = findViewById(R.id.indicatorList);
         indicator.hasFixedSize();
-        indicator.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        indicator.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         background = findViewById(R.id.background);
         blur = findViewById(R.id.blur);
         design();
 
         restaurantHolder = findViewById(R.id.restaurants);
         restaurantHolder.setOffscreenPageLimit(3);
-        restaurantHolder.setPageTransformer(true,new ZoomOutPageTransformer());
+        restaurantHolder.setPageTransformer(true, new ZoomOutPageTransformer());
         loadData();
     }
 
-    private void loadData(){
+    private void loadData() {
         getAllRestaurants();
         indicatorAdapter.callback indicatorCallback = new indicatorAdapter.callback() {
             @Override
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 restaurantHolder.setCurrentItem(position);
             }
         };
-        final indicatorAdapter indicatorAdapter = new indicatorAdapter(this,restauranList,indicatorCallback);
+        final indicatorAdapter indicatorAdapter = new indicatorAdapter(this, restauranList, indicatorCallback);
         indicator.setAdapter(indicatorAdapter);
 
         MainActivity.restaurantAdapter restaurantAdapter = new restaurantAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 indicatorAdapter.notifyDataSetChanged();
                 indicator.scrollToPosition(position);
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
 
@@ -90,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
         String[] namearray = this.getResources().getStringArray(R.array.restaurant_names);
         String[] discriptionarray = this.getResources().getStringArray(R.array.restaurant_descriptions);
 
-        for(int i = 0;i < namearray.length;i++){
+        for (int i = 0; i < namearray.length; i++) {
             String name = namearray[i];
             String description = discriptionarray[i];
             String logo = iconarray[i];
-            restaurantInfo restaurant = new restaurantInfo(name,description,logo);
+            restaurantInfo restaurant = new restaurantInfo(name, description, logo);
             restauranList.add(restaurant);
         }
     }
@@ -103,19 +104,19 @@ public class MainActivity extends AppCompatActivity {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = calculateInSampleSize(options, 200, 200);
         options.inJustDecodeBounds = false;
-        Bitmap Background = BitmapFactory.decodeResource(getResources(),R.drawable.food_background_1,options);
+        Bitmap Background = BitmapFactory.decodeResource(getResources(), R.drawable.food_background_1, options);
 
-        try{
+        try {
             Palette.from(Background).generate(new Palette.PaletteAsyncListener() {
                 public void onGenerated(Palette p) {
                     // Use generated instance
 
                     int color = 0x000000;
                     int vibrant = p.getVibrantColor(color);
-                    blur.setBackgroundColor(Color.argb(180,Color.red(vibrant),Color.green(vibrant),Color.blue(vibrant)));
+                    blur.setBackgroundColor(Color.argb(180, Color.red(vibrant), Color.green(vibrant), Color.blue(vibrant)));
                 }
             });
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();// bad bitmap
             e.getMessage();
         }
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class restaurantAdapter extends FragmentPagerAdapter{
+    public class restaurantAdapter extends FragmentPagerAdapter {
 
         restaurantAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);

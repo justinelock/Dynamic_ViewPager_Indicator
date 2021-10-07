@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indicatorViewHolder>{
+public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indicatorViewHolder> {
 
     private Context RestaurantContx;
     private ArrayList<restaurantInfo> restgaurants;
@@ -36,7 +36,7 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
     @Override
     public indicatorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(RestaurantContx);
-        View itemView = inflater.inflate(R.layout.layout_indicator_item,null,false);
+        View itemView = inflater.inflate(R.layout.layout_indicator_item, null, false);
         return new indicatorViewHolder(itemView);
     }
 
@@ -44,18 +44,18 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
     public void onBindViewHolder(@NonNull final indicatorViewHolder holder, final int position) {
         restaurantInfo restaurant = restgaurants.get(position);
         Resources resources = RestaurantContx.getResources();
-        final int resourceId = resources.getIdentifier(restaurant.getLogoName(),"drawable",RestaurantContx.getPackageName());
+        final int resourceId = resources.getIdentifier(restaurant.getLogoName(), "drawable", RestaurantContx.getPackageName());
         Glide.with(RestaurantContx)
                 .load(resourceId)
                 .apply(new RequestOptions().placeholder(R.drawable.food_background_1).fitCenter())
                 .into(holder.logo);
 
-        if(selectedIndex == position){
+        if (selectedIndex == position) {
             holder.bottomIndicator.setBackgroundColor(RestaurantContx.getResources().getColor(R.color.white));
             holder.bottomIndicator.setVisibility(View.VISIBLE);
             selectedIndex = position;
             selectView = holder.bottomIndicator;
-        }else {
+        } else {
             holder.bottomIndicator.setBackgroundColor(Color.TRANSPARENT);
             holder.bottomIndicator.setVisibility(View.GONE);
         }
@@ -66,7 +66,7 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
             public void onClick(View view) {
                 holder.bottomIndicator.setBackgroundColor(RestaurantContx.getResources().getColor(R.color.white));
                 holder.bottomIndicator.setVisibility(View.VISIBLE);
-                if(selectedIndex != position){
+                if (selectedIndex != position) {
                     selectView.setBackgroundColor(Color.TRANSPARENT);
                     selectView.setVisibility(View.GONE);
                 }
@@ -77,11 +77,11 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
         });
     }
 
-   void setSelectedIndex(int position){
-      selectedIndex = position;
-   }
+    void setSelectedIndex(int position) {
+        selectedIndex = position;
+    }
 
-    public interface callback{
+    public interface callback {
         void onTitleClicked(int position);
     }
 
@@ -96,6 +96,7 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
         RatingBar ratings;
         View clicker;
         View bottomIndicator;
+
         indicatorViewHolder(@NonNull View itemView) {
             super(itemView);
             //instantiate views
