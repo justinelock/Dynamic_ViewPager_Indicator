@@ -17,13 +17,13 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class dishAdapter extends RecyclerView.Adapter<dishAdapter.distViewHolder> {
+public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder> {
 
     private Context dishContx;
     private ArrayList<Dish> dishes;
     private callback listener;
 
-    dishAdapter(Context dishContx, ArrayList<Dish> dishes, callback listener) {
+    DishAdapter(Context dishContx, ArrayList<Dish> dishes, callback listener) {
         this.dishContx = dishContx;
         this.dishes = dishes;
         this.listener = listener;

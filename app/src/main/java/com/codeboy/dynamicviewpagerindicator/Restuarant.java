@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class restuarant extends Fragment {
+public class Restuarant extends Fragment {
 
-    private restaurantInfo resto;
+    private RestaurantInfo resto;
 
-    public void setRestaurant(restaurantInfo restaurant) {
+    public void setRestaurant(RestaurantInfo restaurant) {
         this.resto = restaurant;
     }
 
@@ -43,14 +43,14 @@ public class restuarant extends Fragment {
         dishesList.hasFixedSize();
         dishesList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        dishAdapter.callback callback = new dishAdapter.callback() {
+        DishAdapter.callback callback = new DishAdapter.callback() {
             @Override
             public void onDishClicked() {
                 //add selected dish to user menu
             }
         };
 
-        dishAdapter allDishes = new dishAdapter(getActivity(), resto.getDishes(), callback);
+        DishAdapter allDishes = new DishAdapter(getActivity(), resto.getDishes(), callback);
         dishesList.setAdapter(allDishes);
     }
 

@@ -1,5 +1,6 @@
 package com.codeboy.dynamicviewpagerindicator;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,15 +18,15 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indicatorViewHolder> {
+public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indicatorViewHolder> {
 
     private Context RestaurantContx;
-    private ArrayList<restaurantInfo> restgaurants;
+    private ArrayList<RestaurantInfo> restgaurants;
     private callback listener;
     private View selectView;
     private int selectedIndex;
 
-    indicatorAdapter(Context restaurantContx, ArrayList<restaurantInfo> restgaurants, callback listener) {
+    IndicatorAdapter(Context restaurantContx, ArrayList<RestaurantInfo> restgaurants, callback listener) {
         RestaurantContx = restaurantContx;
         this.restgaurants = restgaurants;
         this.listener = listener;
@@ -41,8 +42,8 @@ public class indicatorAdapter extends RecyclerView.Adapter<indicatorAdapter.indi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final indicatorViewHolder holder, final int position) {
-        restaurantInfo restaurant = restgaurants.get(position);
+    public void onBindViewHolder(@NonNull final indicatorViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+        RestaurantInfo restaurant = restgaurants.get(position);
         Resources resources = RestaurantContx.getResources();
         final int resourceId = resources.getIdentifier(restaurant.getLogoName(), "drawable", RestaurantContx.getPackageName());
         Glide.with(RestaurantContx)

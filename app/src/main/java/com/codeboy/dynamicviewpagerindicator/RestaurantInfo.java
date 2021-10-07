@@ -2,18 +2,18 @@ package com.codeboy.dynamicviewpagerindicator;
 
 import java.util.ArrayList;
 
-public class restaurantInfo {
+public class RestaurantInfo {
 
     private String restaurantName;
     private String description;
     private String logoName;
     private ArrayList<Dish> dishes;
 
-    public restaurantInfo() {
+    public RestaurantInfo() {
 
     }
 
-    restaurantInfo(String restaurantName, String description, String logoName) {
+    RestaurantInfo(String restaurantName, String description, String logoName) {
         this.restaurantName = restaurantName;
         this.description = description;
         this.logoName = logoName;

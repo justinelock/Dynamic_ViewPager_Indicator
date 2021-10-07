@@ -14,7 +14,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -23,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView indicator;
     private ViewPager restaurantHolder;
-    private ArrayList<restaurantInfo> restauranList;
-    ImageView background;
+    private ArrayList<RestaurantInfo> restauranList;
     RelativeLayout blur;
 
     @Override
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         indicator = findViewById(R.id.indicatorList);
         indicator.hasFixedSize();
         indicator.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        background = findViewById(R.id.background);
         blur = findViewById(R.id.blur);
         design();
 
@@ -50,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
         getAllRestaurants();
-        indicatorAdapter.callback indicatorCallback = new indicatorAdapter.callback() {
+        IndicatorAdapter.callback indicatorCallback = new IndicatorAdapter.callback() {
             @Override
             public void onTitleClicked(int position) {
                 restaurantHolder.setCurrentItem(position);
             }
         };
-        final indicatorAdapter indicatorAdapter = new indicatorAdapter(this, restauranList, indicatorCallback);
+        final IndicatorAdapter indicatorAdapter = new IndicatorAdapter(this, restauranList, indicatorCallback);
         indicator.setAdapter(indicatorAdapter);
 
         MainActivity.restaurantAdapter restaurantAdapter = new restaurantAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -95,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             String name = namearray[i];
             String description = discriptionarray[i];
             String logo = iconarray[i];
-            restaurantInfo restaurant = new restaurantInfo(name, description, logo);
+            RestaurantInfo restaurant = new RestaurantInfo(name, description, logo);
             restauranList.add(restaurant);
         }
     }
@@ -153,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            restuarant resto = new restuarant();
+            Restuarant resto = new Restuarant();
             resto.setRestaurant(restauranList.get(position));
             return resto;
         }
