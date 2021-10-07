@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder> {
+public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DistViewHolder> {
 
     private Context dishContx;
     private ArrayList<Dish> dishes;
@@ -31,14 +31,14 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder
 
     @NonNull
     @Override
-    public distViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DistViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(dishContx);
         View itemView = inflater.inflate(R.layout.layout_dish_item, null, false);
-        return new distViewHolder(itemView);
+        return new DistViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull distViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DistViewHolder holder, int position) {
         Dish dish = dishes.get(position);
 
         holder.dish_name.setText(dish.getDishName());
@@ -68,14 +68,14 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder
         return dishes.size();
     }
 
-    class distViewHolder extends RecyclerView.ViewHolder {
+    class DistViewHolder extends RecyclerView.ViewHolder {
         //instanciate views
         ImageView dishPic;
         TextView dish_name;
         TextView dish_description;
         ImageButton order;
 
-        distViewHolder(@NonNull View itemView) {
+        DistViewHolder(@NonNull View itemView) {
             super(itemView);
             //init views
             dishPic = itemView.findViewById(R.id.dish_image);

@@ -35,7 +35,7 @@ public class RestaurantInfo {
         this.description = description;
     }
 
-    String getLogoName() {
+    public String getLogoName() {
         return logoName;
     }
 
