@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         restaurantHolder = findViewById(R.id.restaurants);
         restaurantHolder.setOffscreenPageLimit(3);
-        restaurantHolder.setPageTransformer(true, new ZoomOutPageTransformer());
+        //restaurantHolder.setPageTransformer(true, new ZoomOutPageTransformer());
         loadData();
     }
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         final IndicatorAdapter indicatorAdapter = new IndicatorAdapter(this, restauranList, indicatorCallback);
         indicator.setAdapter(indicatorAdapter);
 
-        MainActivity.restaurantAdapter restaurantAdapter = new restaurantAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        MainActivity.RestaurantAdapter restaurantAdapter = new RestaurantAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         restaurantHolder.setAdapter(restaurantAdapter);
 
         ViewPager.OnPageChangeListener pageListener = new ViewPager.OnPageChangeListener() {
@@ -140,9 +140,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public class restaurantAdapter extends FragmentPagerAdapter {
+    public class RestaurantAdapter extends FragmentPagerAdapter {
 
-        restaurantAdapter(@NonNull FragmentManager fm, int behavior) {
+        RestaurantAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            Restuarant resto = new Restuarant();
+            Restaurant resto = new Restaurant();
             resto.setRestaurant(restauranList.get(position));
             return resto;
         }

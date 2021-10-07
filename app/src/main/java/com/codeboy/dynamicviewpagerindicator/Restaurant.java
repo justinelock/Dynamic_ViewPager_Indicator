@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Restuarant extends Fragment {
+public class Restaurant extends Fragment {
 
     private RestaurantInfo resto;
 
@@ -43,7 +43,7 @@ public class Restuarant extends Fragment {
         dishesList.hasFixedSize();
         dishesList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        DishAdapter.callback callback = new DishAdapter.callback() {
+        DishAdapter.Callback callback = new DishAdapter.Callback() {
             @Override
             public void onDishClicked() {
                 //add selected dish to user menu

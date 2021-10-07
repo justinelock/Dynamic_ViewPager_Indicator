@@ -21,9 +21,9 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder
 
     private Context dishContx;
     private ArrayList<Dish> dishes;
-    private callback listener;
+    private Callback listener;
 
-    DishAdapter(Context dishContx, ArrayList<Dish> dishes, callback listener) {
+    DishAdapter(Context dishContx, ArrayList<Dish> dishes, Callback listener) {
         this.dishContx = dishContx;
         this.dishes = dishes;
         this.listener = listener;
@@ -59,7 +59,7 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.distViewHolder
         });
     }
 
-    public interface callback {
+    public interface Callback {
         void onDishClicked();
     }
 

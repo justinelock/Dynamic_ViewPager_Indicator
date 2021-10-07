@@ -18,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indicatorViewHolder> {
+public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.IndicatorViewHolder> {
 
     private Context RestaurantContx;
     private ArrayList<RestaurantInfo> restgaurants;
@@ -26,7 +26,7 @@ public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indi
     private View selectView;
     private int selectedIndex;
 
-    IndicatorAdapter(Context restaurantContx, ArrayList<RestaurantInfo> restgaurants, callback listener) {
+    public IndicatorAdapter(Context restaurantContx, ArrayList<RestaurantInfo> restgaurants, callback listener) {
         RestaurantContx = restaurantContx;
         this.restgaurants = restgaurants;
         this.listener = listener;
@@ -35,14 +35,14 @@ public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indi
 
     @NonNull
     @Override
-    public indicatorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IndicatorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(RestaurantContx);
         View itemView = inflater.inflate(R.layout.layout_indicator_item, null, false);
-        return new indicatorViewHolder(itemView);
+        return new IndicatorViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final indicatorViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull final IndicatorViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         RestaurantInfo restaurant = restgaurants.get(position);
         Resources resources = RestaurantContx.getResources();
         final int resourceId = resources.getIdentifier(restaurant.getLogoName(), "drawable", RestaurantContx.getPackageName());
@@ -78,7 +78,7 @@ public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indi
         });
     }
 
-    void setSelectedIndex(int position) {
+    public void setSelectedIndex(int position) {
         selectedIndex = position;
     }
 
@@ -91,14 +91,14 @@ public class IndicatorAdapter extends RecyclerView.Adapter<IndicatorAdapter.indi
         return restgaurants.size();
     }
 
-    class indicatorViewHolder extends RecyclerView.ViewHolder {
+    class IndicatorViewHolder extends RecyclerView.ViewHolder {
         //define sub views
         ImageView logo;
         RatingBar ratings;
         View clicker;
         View bottomIndicator;
 
-        indicatorViewHolder(@NonNull View itemView) {
+        IndicatorViewHolder(@NonNull View itemView) {
             super(itemView);
             //instantiate views
             logo = itemView.findViewById(R.id.logo);

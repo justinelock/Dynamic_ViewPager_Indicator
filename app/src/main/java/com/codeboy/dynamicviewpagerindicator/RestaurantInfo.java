@@ -13,7 +13,7 @@ public class RestaurantInfo {
 
     }
 
-    RestaurantInfo(String restaurantName, String description, String logoName) {
+    public RestaurantInfo(String restaurantName, String description, String logoName) {
         this.restaurantName = restaurantName;
         this.description = description;
         this.logoName = logoName;
