@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.codeboy.view.MainActivity2"
+            android:name=".MainActivity"
             android:persistent="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,10 +20,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".MainActivity"
-            android:persistent="true"
-            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
